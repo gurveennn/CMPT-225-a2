@@ -1,0 +1,27 @@
+all: testOSLL testOSULL experiment
+
+
+testOSULL: testOSULL.o 
+	g++ -Wall -o testOSULL testOSULL.o
+
+testOSLL: testOSLL.o 
+	g++ -Wall -o testOSLL testOSLL.o
+
+experiment: experiment.o 
+	g++ -Wall -o experiment experiment.o
+
+
+
+testOSULL.o: testOSULL.cpp OSULL.h
+	g++ -Wall -o testOSULL.o -c testOSULL.cpp
+
+testOSLL.o: testOSLL.cpp testOSLL.h
+	g++ -Wall -o testOSLL.o -c testOSLL.cpp
+
+experiment.o: experiment.cpp OSULL.h OSLL.h
+	g++ -Wall -o experiment.o -c experiment.cpp
+
+
+
+clean:
+	rm -f Test  *.o
